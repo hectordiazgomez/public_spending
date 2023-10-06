@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {ChartBarIcon, PresentationChartBarIcon} from "@heroicons/react/solid"
+import {ChartBarIcon, PresentationChartBarIcon, SparklesIcon} from "@heroicons/react/solid"
 
 function LoadingIcon() {
   return (
@@ -15,31 +15,42 @@ function LoadingIcon() {
 function App() {
 
   const [region, setRegion] = useState(true);
-  const [provincia, setProvincia] = useState(false)
+  const [provincia, setProvincia] = useState(false);
+  const [distrito, setDistrito] = useState(false)
   const [loadingP, setLoadingP] = useState(false)
 
  const showR = () => {
   setRegion(true)
   setProvincia(false)
+  setDistrito(false)
  }
 
  const showP = () => {
   setRegion(false)
-  setProvincia(true)  
+  setProvincia(true) 
+  setDistrito(false) 
+ }
+
+ const showD = () => {
+  setRegion(false)
+  setProvincia(false) 
+  setDistrito(true)   
  }
 
   const [formattedDate, setFormattedDate] = useState('');
   const [data, setData] = useState([]);
   const [datap, setDatap] = useState([]);
+  const [datad, setDatad] = useState([])
   const [loading, setLoading] = useState(true); 
 
   const fetchData = async () => {
     try {
-        const response = await axios.get('http://127.0.0.1:5000/getdata', {
+        const response = await axios.get('http://localhost:5000/getdatall', {
             timeout: 20000,
         });
         setData(response.data.region);
         setDatap(response.data.province);
+        setDatad(response.data.distrito);
         setLoading(false);
     } catch (error) {
         console.error('Error fetching data from MongoDB:', error);
@@ -75,14 +86,18 @@ function App() {
       </div>
       </div>
       <div className='flex justify-center'>
-        <div className='w-4/5 my-12 sm:w-1/2 flex justify-around'>
+        <div className='w-5/6 my-12 sm:w-1/2 flex justify-evenly'>
           <div onClick={showR} className={`${region? "text-purple-600" : "text-blue-600 hover:text-purple-500 cursor-pointer" } flex`}>
-            <ChartBarIcon className='w-7 h-auto mr-2' />
-            <p className='text-xl font-medium'>Regiones</p>
+            <ChartBarIcon className='w-5 sm:w-7 h-auto mr-1 sm:mr-2' />
+            <p className='text-lg sm:text-xl font-medium'>Regiones</p>
           </div>
           <div onClick={showP} className={`${provincia? "text-purple-600" : "text-blue-600 hover:text-purple-500 cursor-pointer" } flex`}>
-            <PresentationChartBarIcon className='w-7 h-auto mr-2' />
-            <p className='text-xl font-medium'>Provincias</p>
+            <PresentationChartBarIcon className='w-5 sm:w-7 h-auto mr-1 sm:mr-2' />
+            <p className='text-lg sm:text-xl font-medium'>Provincias</p>
+          </div>
+          <div onClick={showD} className={`${distrito? "text-purple-600" : "text-blue-600 hover:text-purple-500 cursor-pointer" } flex`}>
+            <SparklesIcon className='w-5 sm:w-7 h-auto mr-1 sm:mr-2' />
+            <p className='text-lg sm:text-xl font-medium'>Distritos</p>
           </div>
         </div>
       </div>
@@ -119,6 +134,29 @@ function App() {
                   ) : (
                     <ul>
                       {datap.map((item, index) => (
+                        <li className="my-6" key={index}>
+                          <p className="text-gray-800 text-lg mb-2">
+                            {index + 1}. {item.name}: {item.avance}%
+                          </p>
+                          <ProgressBar
+                            percentage={item.avance}
+                            isAmazonas={item.name.includes('AMAZONAS')}
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+          }
+          {distrito &&
+                  <div className="w-5/6 sm:w-4/5">
+                  {loadingP ? (
+                    <div className='flex justify-center'>
+                      <LoadingIcon /> 
+                    </div>
+                  ) : (
+                    <ul>
+                      {datad.map((item, index) => (
                         <li className="my-6" key={index}>
                           <p className="text-gray-800 text-lg mb-2">
                             {index + 1}. {item.name}: {item.avance}%
