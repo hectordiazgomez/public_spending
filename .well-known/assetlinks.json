@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.netlify.gastopublico.twa",
+        "sha256_cert_fingerprints": ["53:61:59:E2:A4:0E:B0:B6:3E:17:81:B1:D5:EC:C7:72:E5:58:EA:1D:A3:6D:5B:9C:D7:5B:87:59:17:7C:0A:76"]
+      }
+    }]
