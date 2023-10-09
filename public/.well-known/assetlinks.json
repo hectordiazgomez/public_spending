@@ -3,6 +3,6 @@
       "target": {
         "namespace": "android_app",
         "package_name": "app.netlify.gastopublico.twa",
-        "sha256_cert_fingerprints": ["53:61:59:E2:A4:0E:B0:B6:3E:17:81:B1:D5:EC:C7:72:E5:58:EA:1D:A3:6D:5B:9C:D7:5B:87:59:17:7C:0A:76"]
+        "sha256_cert_fingerprints": ["71:1B:FA:86:0C:E7:64:24:F6:F7:7F:33:5F:CC:21:2D:EF:2E:C9:B7:E7:91:2D:F0:8B:2C:F8:81:08:94:DB:33"]
       }
     }]
