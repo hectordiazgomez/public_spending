@@ -88,15 +88,15 @@ function App() {
       <div className='flex justify-center'>
         <div className='w-5/6 my-12 sm:w-1/2 flex justify-evenly'>
           <div onClick={showR} className={`${region? "text-purple-600" : "text-blue-600 hover:text-purple-500 cursor-pointer" } flex`}>
-            <ChartBarIcon className='w-5 sm:w-7 h-auto mr-1 sm:mr-2' />
+            <ChartBarIcon className='w-5 sm:w-7 sm:flex hidden h-auto mr-1 sm:mr-2' />
             <p className='text-lg sm:text-xl font-medium'>Regiones</p>
           </div>
           <div onClick={showP} className={`${provincia? "text-purple-600" : "text-blue-600 hover:text-purple-500 cursor-pointer" } flex`}>
-            <PresentationChartBarIcon className='w-5 sm:w-7 h-auto mr-1 sm:mr-2' />
+            <PresentationChartBarIcon className='w-5 sm:flex hidden sm:w-7 h-auto mr-1 sm:mr-2' />
             <p className='text-lg sm:text-xl font-medium'>Provincias</p>
           </div>
           <div onClick={showD} className={`${distrito? "text-purple-600" : "text-blue-600 hover:text-purple-500 cursor-pointer" } flex`}>
-            <SparklesIcon className='w-5 sm:w-7 h-auto mr-1 sm:mr-2' />
+            <SparklesIcon className='w-5 sm:w-7 sm:flex hidden h-auto mr-1 sm:mr-2' />
             <p className='text-lg sm:text-xl font-medium'>Distritos</p>
           </div>
         </div>
