@@ -46,7 +46,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://18.223.22.242:9020/getdatall', {
+      const response = await axios.get('https://18.223.22.242:9020/getdatall', {
             timeout: 20000,
         });
         setData(response.data.region);
