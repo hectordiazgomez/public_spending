@@ -12,6 +12,7 @@ function LoadingIcon() {
   );
 }
 
+
 function App() {
 
   const [region, setRegion] = useState(true);
@@ -45,7 +46,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-        const response = await axios.get('http://localhost:5000/getdatall', {
+      const response = await axios.get('http://18.223.22.242:9020/getdatall', {
             timeout: 20000,
         });
         setData(response.data.region);
