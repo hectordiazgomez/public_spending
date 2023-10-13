@@ -99,7 +99,7 @@ function App() {
           </div>
           <div onClick={showD} className={`${distrito? "text-purple-600" : "text-blue-600 hover:text-purple-500 cursor-pointer" } flex`}>
             <SparklesIcon className='w-5 sm:w-7 sm:flex hidden h-auto mr-1 sm:mr-2' />
-            <p className='text-lg sm:text-xl font-medium'>Distritosss</p>
+            <p className='text-lg sm:text-xl font-medium'>Distritos</p>
           </div>
         </div>
       </div>
