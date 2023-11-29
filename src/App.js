@@ -55,12 +55,13 @@ function App() {
   const [datap, setDatap] = useState([]);
   const [datad, setDatad] = useState([]);
   const [districtsProjects, setDistrictProjects] = useState([])
+  const [proyectosAmazonas, setProyectosAmazonas] = useState([])
   const [loading, setLoading] = useState(false); 
 
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/getdatall', {
+      const response = await axios.get('https://awsdata.konlaptechs.com:9020/getdatall', {
             timeout: 100000,
         });
         setData(response.data.region);
